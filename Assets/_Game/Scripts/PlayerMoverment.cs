@@ -57,10 +57,10 @@ public class PlayerMoverment : MonoBehaviour, IDieable
     {
         this.isDead = isDead;
     }
-    private void Awake()
-    {
-        audioManagerScript = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManagerScript>();
-    }
+    //private void Awake()
+    //{
+    //    audioManagerScript = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManagerScript>();
+    //}
     private int GetState()
     {
         if (isDead)
