@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class ManagerSkill : MonoBehaviour
 {
-    public GameObject skill_1;
-    bool canUseSkill_1 = true;
+    public GameObject skill_1, skill_2;
+    private bool canUseSkill_1 = true, canUseSkill_2 = true;
+    private float delayTimeSkill_1 = 10f;
     void Start()
     {
 
@@ -14,10 +15,16 @@ public class ManagerSkill : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R) && canUseSkill_1)
+        if (Input.GetKeyDown(KeyCode.E) && canUseSkill_1)
         {
-            StartCoroutine(ActivateAndDeactivateSkill());
+            StartCoroutine(ActivateAndDeactivateSkill(skill_1, 4f));
             canUseSkill_1 = false;
+            Invoke(nameof(ResetSkillCooldown1), 10f);
+        }
+        if (Input.GetKeyDown(KeyCode.R) && canUseSkill_2)
+        {
+            StartCoroutine(ActivateAndDeactivateSkill(skill_2, 4f));
+            canUseSkill_2 = false;
             Invoke(nameof(ResetSkillCooldown1), 10f);
         }
     }
@@ -25,10 +32,10 @@ public class ManagerSkill : MonoBehaviour
     {
         canUseSkill_1 = true;
     }
-    private IEnumerator ActivateAndDeactivateSkill()
+    private IEnumerator ActivateAndDeactivateSkill(GameObject skill, float delayTime)
     {
-        skill_1.SetActive(true);
-        yield return new WaitForSeconds(4f); // Adjust this delay as per your requirement
-        skill_1.SetActive(false);
+        skill.SetActive(true);
+        yield return new WaitForSeconds(delayTime); // Adjust this delay as per your requirement
+        skill.SetActive(false);
     }
 }

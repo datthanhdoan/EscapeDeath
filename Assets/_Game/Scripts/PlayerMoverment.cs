@@ -14,7 +14,13 @@ public class PlayerMoverment : MonoBehaviour, IDieable
     //[Range(0, .3f)][SerializeField] private float m_MovementSmoothing = .05f;
     private bool isGrounded = true;
     float slowMove;
-    // Effect
+    // Luot
+    [SerializeField] float dashBoost = 30f;
+    private float dashTime;
+    [SerializeField] private float DashTime;
+    private bool isDashing = false;
+    [SerializeField] private float dashDelay = 5;
+    private float dashTimer;
 
 
 
@@ -52,7 +58,7 @@ public class PlayerMoverment : MonoBehaviour, IDieable
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        moveSpeed = 550f;
+        moveSpeed = 10f;
         slowMove = moveSpeed / 3;
         jumpForce = 30f;
 
@@ -61,6 +67,7 @@ public class PlayerMoverment : MonoBehaviour, IDieable
     void Update()
     {
         moveHorizontal = Input.GetAxisRaw("Horizontal");
+        Dash();
         var state = GetState();
         if (state != currentState)
         {
@@ -70,12 +77,35 @@ public class PlayerMoverment : MonoBehaviour, IDieable
 
         }
         if (isDead) return;
+
         Move();
 
 
 
     }
     #region Move
+    private void Dash()
+    {
+
+
+        if (Input.GetKeyDown(KeyCode.W) && dashTime <= 0 && !isDashing)
+        {
+            moveSpeed += dashBoost;
+            dashTime = DashTime;
+            isDashing = true;
+            dashTimer = dashDelay;
+        }
+        if (dashTime <= 0 && isDashing)
+        {
+            moveSpeed -= dashBoost;
+            isDashing = false;
+        }
+        else
+        {
+            dashTime -= Time.fixedDeltaTime;
+        }
+
+    }
     private void Move()
     {
         if (isGrounded && Input.GetKeyDown("space"))
@@ -86,7 +116,7 @@ public class PlayerMoverment : MonoBehaviour, IDieable
         // Moverment
         if (Mathf.Abs(moveHorizontal) > 0.1f)
         {
-            rb.velocity = (new Vector2(moveHorizontal * Time.fixedDeltaTime * moveSpeed, rb.velocity.y));
+            rb.velocity = (new Vector2(moveHorizontal * moveSpeed, rb.velocity.y));
             transform.rotation = Quaternion.Euler(new Vector3(0, moveHorizontal > 0 ? 0 : 180, 0));
         }
         else
