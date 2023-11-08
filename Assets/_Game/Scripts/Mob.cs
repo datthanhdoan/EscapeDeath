@@ -12,7 +12,6 @@ public class Mob : MonoBehaviour, IDieable
     private GameObject player;
     private PlayerMoverment playerMoverment;
     public Rigidbody2D rb;
-    public LayerMask layerMark;
     [SerializeField] private float distanceX;
     private float distanceY, deltaX, deltaY;
     private float speed;

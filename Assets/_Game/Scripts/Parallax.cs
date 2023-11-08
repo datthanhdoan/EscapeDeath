@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,9 +20,9 @@ public class Parallax : MonoBehaviour
         float dist = (cam.transform.position.x * parallaxEffect);
 
         transform.position = new Vector3(startpos + dist, transform.position.y, transform.position.z);
-        
-        if (temp > startpos + length) startpos += length;
-        else if (temp < startpos - length) startpos -= length;
+
+        if (temp > startpos + length * 0.85) startpos += length;
+        else if (temp < startpos - length * 0.85) startpos -= length;
 
     }
 }

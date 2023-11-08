@@ -75,6 +75,7 @@ public class PlayerMoverment : MonoBehaviour, IDieable
 
 
     }
+    #region Move
     private void Move()
     {
         if (isGrounded && Input.GetKeyDown("space"))
@@ -90,12 +91,11 @@ public class PlayerMoverment : MonoBehaviour, IDieable
         }
         else
         {
-            float deceleration = 13.5f;
+            float deceleration = 20.5f;
             rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, 0, deceleration * Time.deltaTime), rb.velocity.y);
         }
-
-
     }
+    #endregion
     #region Animation Keys
     private static readonly int Run = Animator.StringToHash("Player_Run");
     private static readonly int Idle = Animator.StringToHash("Player_Idle");
@@ -109,16 +109,10 @@ public class PlayerMoverment : MonoBehaviour, IDieable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = true;
-        }
+        isGrounded = true;
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = false;
-        }
+        isGrounded = false;
     }
 }
