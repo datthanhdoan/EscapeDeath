@@ -4,11 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Platform
-  - Mob
-  - Lava
-  - backgroundMusic
   - Audio
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -16,11 +13,11 @@ TagManager:
   - 
   - Water
   - UI
-  - Ground
-  - Climb
-  - Player
-  - Mod
-  - Platform
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 

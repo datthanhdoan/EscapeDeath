@@ -11,10 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Game/Scenes/FirstScreen.unity
     guid: 32110e103cb47c046970049cf364b83c
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Game/Scenes/SecondScreen.unity
     guid: 001679c8fd28d2f43a43666f666e92dc
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Game/Scenes/ThirthScreen.unity
     guid: 91f40d46ddcc8794180b3c09bc93467f
   m_configObjects: {}
