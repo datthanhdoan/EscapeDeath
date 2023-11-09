@@ -8,7 +8,8 @@ public class PlayerMoverment : MonoBehaviour, IDieable
     // Moverment
     private float moveSpeed;
     private float jumpForce;
-    private float moveHorizontal;
+    private float moveHorizontal, moveVertical;
+    private float originalGravity;
     private bool isDead = false;
     //private Vector3 m_Velocity = Vector3.zero;
     //[Range(0, .3f)][SerializeField] private float m_MovementSmoothing = .05f;
@@ -22,6 +23,10 @@ public class PlayerMoverment : MonoBehaviour, IDieable
     [SerializeField] private float dashDelay = 5;
     private float dashTimer;
 
+    //Effect
+    [Header("Effect")]
+    [SerializeField] private TrailRenderer _dash;
+    [SerializeField] private ParticleSystem _dust;
 
 
 
@@ -61,44 +66,47 @@ public class PlayerMoverment : MonoBehaviour, IDieable
         moveSpeed = 10f;
         slowMove = moveSpeed / 3;
         jumpForce = 30f;
-
+        originalGravity = rb.gravityScale;
     }
 
     void Update()
     {
         moveHorizontal = Input.GetAxisRaw("Horizontal");
-        Dash();
+        moveVertical = Input.GetAxisRaw("Vertical");
+        DashEffect();
         var state = GetState();
         if (state != currentState)
         {
             if (currentState == Dead) return;
             anim.CrossFade(state, 0.05f, 0);
             currentState = state;
-
         }
         if (isDead) return;
 
         Move();
-
-
-
     }
-    #region Move
-    private void Dash()
+
+    #region Effect
+    private void DashEffect()
     {
-
-
-        if (Input.GetKeyDown(KeyCode.W) && dashTime <= 0 && !isDashing)
+        if (Input.GetKeyDown(KeyCode.Space) && dashTime <= 0 && !isDashing)
         {
             moveSpeed += dashBoost;
             dashTime = DashTime;
             isDashing = true;
             dashTimer = dashDelay;
+            rb.gravityScale = 0f;
+            rb.velocity = new Vector2(rb.velocity.x, 0f);
+            _dash.emitting = true;
+            if (isGrounded) DustEffect();
         }
         if (dashTime <= 0 && isDashing)
         {
             moveSpeed -= dashBoost;
             isDashing = false;
+            rb.gravityScale = originalGravity;
+            _dash.emitting = false;
+
         }
         else
         {
@@ -106,12 +114,27 @@ public class PlayerMoverment : MonoBehaviour, IDieable
         }
 
     }
+
+    private void DustEffect()
+    {
+        _dust.Play();
+    }
+
+    #endregion
+
+
+
+
+    #region Move
+
     private void Move()
     {
-        if (isGrounded && Input.GetKeyDown("space"))
+        if (isGrounded && moveVertical > 0.1f)
         {
+            DustEffect();
             rb.velocity = (new Vector2(rb.velocity.x, 1 * jumpForce));
             isGrounded = false;
+
         }
         // Moverment
         if (Mathf.Abs(moveHorizontal) > 0.1f)

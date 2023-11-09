@@ -15,13 +15,13 @@ public class ManagerSkill : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && canUseSkill_1)
+        if (Input.GetKeyDown(KeyCode.U) && canUseSkill_1)
         {
             StartCoroutine(ActivateAndDeactivateSkill(skill_1, 4f));
             canUseSkill_1 = false;
             Invoke(nameof(ResetSkillCooldown1), 10f);
         }
-        if (Input.GetKeyDown(KeyCode.R) && canUseSkill_2)
+        if (Input.GetKeyDown(KeyCode.I) && canUseSkill_2)
         {
             StartCoroutine(ActivateAndDeactivateSkill(skill_2, 4f));
             canUseSkill_2 = false;

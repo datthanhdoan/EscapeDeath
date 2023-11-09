@@ -34,7 +34,7 @@ public class Mob : MonoBehaviour, IDieable
         rb = GetComponent<Rigidbody2D>();
         length = GetComponent<Collider2D>().bounds.size.x;
         playerMoverment = FindObjectOfType<PlayerMoverment>();
-        speed = 500f;
+        speed = 5f;
     }
     public bool getIsRunning()
     {
@@ -69,7 +69,7 @@ public class Mob : MonoBehaviour, IDieable
 
             direction = objectPosition.x < playerPosition.x ? 1 : -1;
 
-            rb.velocity = new Vector2(direction * Time.fixedDeltaTime * speed, rb.velocity.y);
+            rb.velocity = new Vector2(direction * speed, rb.velocity.y);
             if (objectPosition.x < playerPosition.x && !isFacingRight)
             {
                 Flip();
@@ -93,13 +93,13 @@ public class Mob : MonoBehaviour, IDieable
         isFacingRight = !isFacingRight;
         transform.rotation = Quaternion.Euler(new Vector3(0, isFacingRight ? 0 : 180, 0));
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            bool x = true;
-            playerMoverment.setDead(x);
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Player"))
+    //    {
+    //        bool x = true;
+    //        playerMoverment.setDead(x);
+    //    }
+    //}
 
 }
