@@ -30,12 +30,16 @@ public class PlayerMoverment : MonoBehaviour, IDieable
     [SerializeField] private TrailRenderer _dash;
     [SerializeField] private ParticleSystem _dust;
 
-    // Attack
+    // Combat
+    [Header("Combat")]
     private bool _isTakeHit = false;
     private bool _isCombat = false;
     private int _CombatState;
     private bool _isCombatComplete = true;
-
+    public Transform _attackPoint;
+    public int _attackDamage = 10;
+    [Range(0, 5)] public float _attackRange;
+    [SerializeField] private LayerMask _enemyLayers;
 
     // animation
     [SerializeField] private Animator anim;
@@ -92,7 +96,6 @@ public class PlayerMoverment : MonoBehaviour, IDieable
             currentState = state;
         }
         if (isDead) return;
-        Debug.Log("Combat is completed ? : " + _isCombatComplete);
         if (!_isCombatComplete) moveHorizontal = moveVertical = 0;
 
         Move();
@@ -155,8 +158,7 @@ public class PlayerMoverment : MonoBehaviour, IDieable
             _isCombatComplete = false;
             _isCombat = true;
             _CombatState = Random.Range(0, 2) == 0 ? AT1 : AT2;
-            Debug.Log(_isCombat);
-            Debug.Log("Q");
+            BasicAttack();
             return;
         }
         if (_isCombat)
@@ -171,6 +173,22 @@ public class PlayerMoverment : MonoBehaviour, IDieable
             }
         }
         if (_isCombatComplete) _isCombat = false;
+    }
+
+    private void BasicAttack()
+    {
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _enemyLayers);
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            Debug.Log("Hit " + enemy.name);
+            enemy.GetComponentInChildren<EnemyScript>().TakeDamage(_attackDamage);
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (_attackPoint == null) return;
+        Gizmos.DrawWireSphere(_attackPoint.position, _attackRange);
     }
     #endregion
 

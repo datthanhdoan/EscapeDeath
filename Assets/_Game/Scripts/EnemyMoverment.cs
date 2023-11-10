@@ -5,19 +5,21 @@ using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Mob : MonoBehaviour, IDieable
+public class EnemyMoverment : MonoBehaviour
 {
 
     private bool playIsDead;
     private GameObject player;
+    private EnemyScript enemyScript;
     private PlayerMoverment playerMoverment;
+    private new Collider2D collider;
     public Rigidbody2D rb;
     [SerializeField] private float distanceX;
     private float distanceY, deltaX, deltaY;
     private float speed;
     private float distance, direction;
     private bool isFacingRight = true;
-    private bool isDead = false, isRunning = false;
+    private bool isRunning = false;
     private float length;
 
     public float getDistance()
@@ -28,31 +30,34 @@ public class Mob : MonoBehaviour, IDieable
     {
         return distanceX;
     }
+
+    private void Awake()
+    {
+        enemyScript = GetComponentInChildren<EnemyScript>();
+    }
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         length = GetComponent<Collider2D>().bounds.size.x;
         playerMoverment = FindObjectOfType<PlayerMoverment>();
-        speed = 5f;
+        collider = GetComponent<Collider2D>();
+        speed = 2.5f;
     }
     public bool getIsRunning()
     {
         return isRunning;
     }
-    public void setDead(bool isDead)
-    {
-        this.isDead = isDead;
-    }
-    public bool getDead()
-    {
-        return isDead;
-    }
 
     private void FixedUpdate()
     {
 
-        if (isDead) return;
+        if (enemyScript.getCurrentHealth() == 0)
+        {
+            collider.enabled = false;
+            Destroy(rb);
+            return;
+        }
         distanceY = distanceX / 2;
         Vector2 objectPosition = transform.position;
         Vector2 playerPosition = player.transform.position;
@@ -62,7 +67,7 @@ public class Mob : MonoBehaviour, IDieable
 
         if ((deltaX * deltaX) / (distanceX * distanceX) + (deltaY * deltaY) / (distanceY * distanceY) <= 1)
         {
-            if (playerMoverment.getDead()) return;
+            //if (playerMoverment.getDead()) return;
             isRunning = true;
             Vector2 target = new Vector2(playerPosition.x, objectPosition.y);
 
@@ -70,11 +75,11 @@ public class Mob : MonoBehaviour, IDieable
             direction = objectPosition.x < playerPosition.x ? 1 : -1;
 
             rb.velocity = new Vector2(direction * speed, rb.velocity.y);
-            if (objectPosition.x < playerPosition.x && !isFacingRight)
+            if (objectPosition.x < playerPosition.x && isFacingRight)
             {
                 Flip();
             }
-            else if (objectPosition.x > playerPosition.x && isFacingRight)
+            else if (objectPosition.x > playerPosition.x && !isFacingRight)
             {
                 Flip();
             }

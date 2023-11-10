@@ -31,7 +31,7 @@ public class DogAnimation : MonoBehaviour
     {
 
         if (playerMoverment.getDead()) return Idle;
-        if (dogmov.getDead()) return Dead;
+        //if (dogmov.getDead()) return Dead;
         return dogmov.getIsRunning() ? Run : Idle;
 
     }

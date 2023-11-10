@@ -6,7 +6,7 @@ using UnityEngine;
 public class GrenadeScript : MonoBehaviour
 {
     private GameObject player;
-    private Mob mob;
+    private EnemyMoverment EnemyMoverment;
     private Rigidbody2D rb;
     [SerializeField] private float force = 25;
     private float timer;
@@ -26,7 +26,7 @@ public class GrenadeScript : MonoBehaviour
     {
         playerMoverment = FindObjectOfType<PlayerMoverment>();
         timer = 0;
-        mob = FindObjectOfType<Mob>();
+        EnemyMoverment = FindObjectOfType<EnemyMoverment>();
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         Vector3 direction = player.transform.position - transform.position;
@@ -54,9 +54,9 @@ public class GrenadeScript : MonoBehaviour
             Instantiate(effect, transform.position, Quaternion.identity);
             playerMoverment.setDead(true);
         }
-        if (collision.gameObject.CompareTag("Mob"))
+        if (collision.gameObject.CompareTag("EnemyMoverment"))
         {
-            mob.setDead(true);
+            //EnemyMoverment.setDead(true);
         }
     }
 }
