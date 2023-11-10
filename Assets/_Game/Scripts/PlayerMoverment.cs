@@ -6,6 +6,7 @@ public class PlayerMoverment : MonoBehaviour, IDieable
 
     public Rigidbody2D rb;
     // Moverment
+    public LayerMask groundLayer;
     private float moveSpeed;
     private float jumpForce;
     private float moveHorizontal, moveVertical;
@@ -13,7 +14,8 @@ public class PlayerMoverment : MonoBehaviour, IDieable
     private bool isDead = false;
     //private Vector3 m_Velocity = Vector3.zero;
     //[Range(0, .3f)][SerializeField] private float m_MovementSmoothing = .05f;
-    private bool isGrounded = true;
+
+    private bool isGrounded;
     float slowMove;
     // Luot
     [SerializeField] float dashBoost = 30f;
@@ -54,7 +56,10 @@ public class PlayerMoverment : MonoBehaviour, IDieable
     {
         if (isDead) return Dead;
         if (!isGrounded) return Jump;
-        if (isGrounded) return Mathf.Abs(moveHorizontal) > 0.1f ? Run : Idle;
+        if (isGrounded)
+        {
+            return Mathf.Abs(moveHorizontal) > 0.1f ? Run : Idle;
+        }
         return Idle;
 
     }
@@ -73,6 +78,7 @@ public class PlayerMoverment : MonoBehaviour, IDieable
     {
         moveHorizontal = Input.GetAxisRaw("Horizontal");
         moveVertical = Input.GetAxisRaw("Vertical");
+        checkOnGround();
         DashEffect();
         var state = GetState();
         if (state != currentState)
@@ -89,7 +95,7 @@ public class PlayerMoverment : MonoBehaviour, IDieable
     #region Effect
     private void DashEffect()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && dashTime <= 0 && !isDashing)
+        if (Input.GetKeyDown(KeyCode.W) && dashTime <= 0 && !isDashing)
         {
             moveSpeed += dashBoost;
             dashTime = DashTime;
@@ -126,15 +132,25 @@ public class PlayerMoverment : MonoBehaviour, IDieable
 
 
     #region Move
-
+    private void checkOnGround()
+    {
+        bool ground = false;
+        Vector2 rayOrigin = new Vector2(transform.position.x, transform.position.y);
+        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, 2f, groundLayer);
+        Color rayColor = hit.collider != null ? Color.red : Color.blue;
+        Debug.DrawRay(rayOrigin, Vector2.down * 2f, rayColor);
+        if (hit.collider != null)
+        {
+            ground = true;
+        }
+        isGrounded = ground;
+    }
     private void Move()
     {
         if (isGrounded && moveVertical > 0.1f)
         {
             DustEffect();
             rb.velocity = (new Vector2(rb.velocity.x, 1 * jumpForce));
-            isGrounded = false;
-
         }
         // Moverment
         if (Mathf.Abs(moveHorizontal) > 0.1f)
@@ -160,12 +176,5 @@ public class PlayerMoverment : MonoBehaviour, IDieable
 
     #endregion
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        isGrounded = true;
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        isGrounded = false;
-    }
+
 }
