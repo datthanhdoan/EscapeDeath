@@ -30,6 +30,11 @@ public class PlayerMoverment : MonoBehaviour, IDieable
     [SerializeField] private TrailRenderer _dash;
     [SerializeField] private ParticleSystem _dust;
 
+    // Attack
+    private bool _isTakeHit = false;
+    private bool _isCombat = false;
+    private int _CombatState;
+    private bool _isCombatComplete = true;
 
 
     // animation
@@ -55,11 +60,9 @@ public class PlayerMoverment : MonoBehaviour, IDieable
     private int GetState()
     {
         if (isDead) return Dead;
+        if (_isCombat) return _CombatState;
         if (!isGrounded) return Jump;
-        if (isGrounded)
-        {
-            return Mathf.Abs(moveHorizontal) > 0.1f ? Run : Idle;
-        }
+        if (isGrounded) return Mathf.Abs(moveHorizontal) > 0.1f ? Run : Idle;
         return Idle;
 
     }
@@ -79,6 +82,7 @@ public class PlayerMoverment : MonoBehaviour, IDieable
         moveHorizontal = Input.GetAxisRaw("Horizontal");
         moveVertical = Input.GetAxisRaw("Vertical");
         checkOnGround();
+        Combat();
         DashEffect();
         var state = GetState();
         if (state != currentState)
@@ -88,6 +92,8 @@ public class PlayerMoverment : MonoBehaviour, IDieable
             currentState = state;
         }
         if (isDead) return;
+        Debug.Log("Combat is completed ? : " + _isCombatComplete);
+        if (!_isCombatComplete) moveHorizontal = moveVertical = 0;
 
         Move();
     }
@@ -129,7 +135,44 @@ public class PlayerMoverment : MonoBehaviour, IDieable
     #endregion
 
 
-
+    #region ComBat
+    private bool CheckAnimation(string animationName)
+    {
+        AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
+        return stateInfo.IsName(animationName) && stateInfo.normalizedTime >= 1.0f;
+    }
+    private void Combat()
+    {
+        if (_isTakeHit)
+        {
+            _isCombatComplete = false;
+            _isCombat = true;
+            _CombatState = TakeHit;
+            return;
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            _isCombatComplete = false;
+            _isCombat = true;
+            _CombatState = Random.Range(0, 2) == 0 ? AT1 : AT2;
+            Debug.Log(_isCombat);
+            Debug.Log("Q");
+            return;
+        }
+        if (_isCombat)
+        {
+            foreach (string animationName in combatAnimations)
+            {
+                if (CheckAnimation(animationName))
+                {
+                    _isCombatComplete = true;
+                    break;
+                }
+            }
+        }
+        if (_isCombatComplete) _isCombat = false;
+    }
+    #endregion
 
     #region Move
     private void checkOnGround()
@@ -170,10 +213,12 @@ public class PlayerMoverment : MonoBehaviour, IDieable
     private static readonly int Idle = Animator.StringToHash("Player_Idle");
     private static readonly int Jump = Animator.StringToHash("Player_Jump");
     private static readonly int Dead = Animator.StringToHash("Player_Dead");
-    private static readonly int Climb = Animator.StringToHash("Player_Climb");
-    private static readonly int Down = Animator.StringToHash("Player_Fall");
-    private static readonly int SlowDown = Animator.StringToHash("Player_SlowDown");
 
+    // Combat
+    private static readonly int AT1 = Animator.StringToHash("Player_AT1");
+    private static readonly int AT2 = Animator.StringToHash("Player_AT2");
+    private static readonly int TakeHit = Animator.StringToHash("Player_TakeHit");
+    private string[] combatAnimations = { "Player_TakeHit", "Player_AT1", "Player_AT2" };
     #endregion
 
 

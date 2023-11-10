@@ -15,7 +15,7 @@ public class ManagerSkill : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.U) && canUseSkill_1)
+        if (Input.GetKeyDown(KeyCode.E) && canUseSkill_1)
         {
             StartCoroutine(ActivateAndDeactivateSkill(skill_1, 4f));
             canUseSkill_1 = false;
