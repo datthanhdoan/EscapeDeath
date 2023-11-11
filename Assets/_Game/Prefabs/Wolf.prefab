@@ -197,10 +197,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _anim: {fileID: 4247908864671966025}
+  _enemyMoverment: {fileID: 4247908865661513091}
   maxHealth: 30
   healthBar: {fileID: 4247908865191752136}
   _attackPoint: {fileID: 6908862120459108566}
   _attackDamage: 10
+  isCombat: 0
   _attackRange: 0.84
   _playerLayers:
     serializedVersion: 2
@@ -486,6 +488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 4247908865661513088}
   distanceX: 10
+  isRunning: 0
 --- !u!50 &4247908865661513088
 Rigidbody2D:
   serializedVersion: 4
