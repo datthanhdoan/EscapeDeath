@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class boss_run : StateMachineBehaviour
+public class Enemy4_run : StateMachineBehaviour
 {
     Transform player;
     public float speed = 2.5f;
-    public int attackRange;
     Rigidbody2D rb; 
     Boss boss;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -27,7 +26,7 @@ public class boss_run : StateMachineBehaviour
         rb.MovePosition(newPos);
 
         Debug.Log(Vector2.Distance(player.position, rb.position));
-        if (Vector2.Distance(player.position, rb.position) <= 16) {
+        if (Vector2.Distance(player.position, rb.position) <= 10) {
             Debug.Log("attack");;
             animator.SetTrigger("Attack");
         }
