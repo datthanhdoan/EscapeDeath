@@ -6,9 +6,16 @@ public class EnemyScript : MonoBehaviour
 {
     // Start is called before the first frame update
     public Animator _anim;
-    private int maxHealth = 30;
+    public EnemyMoverment _enemyMoverment;
+    [SerializeField] private int maxHealth = 30;
     private int currentHealth;
     public HealthBar healthBar;
+    [Header("Attack")]
+    public Transform _attackPoint;
+    public int _attackDamage = 10;
+    public bool isCombat = false;
+    [Range(0, 5)] public float _attackRange;
+    [SerializeField] private LayerMask _playerLayers;
     public int getCurrentHealth()
     {
         return currentHealth;
@@ -22,14 +29,46 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if (_anim.GetBool("Hurt"))
+        //{
+        //    _enemyMoverment.setIsRunning(false);
+        //}
+        if (_enemyMoverment.getIsRunning() && currentHealth > 0)
+        {
+            _anim.SetBool("Run", true);
+        }
+        else
+        {
+            _anim.SetBool("Run", false);
+        }
+    }
+    public void Attack()
+    {
+        Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _playerLayers);
+        foreach (Collider2D hit in hitPlayer)
+        {
+            Debug.Log("Enemy Attack player");
+            hit.GetComponent<PlayerMoverment>().TakeDamage(_attackDamage);
+        }
+    }
 
+    public void HurtDone()
+    {
+        _anim.SetBool("Hurt", false);
+        isCombat = false;
+    }
+    private void OnDrawGizmosSelected()
+    {
+        if (_attackPoint == null) return;
+        Gizmos.DrawWireSphere(_attackPoint.position, _attackRange);
     }
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth, maxHealth);
-        _anim.SetTrigger("Hurt");
-        if (currentHealth == 0)
+        _anim.SetBool("Hurt", true);
+        isCombat = true;
+        if (currentHealth <= 0)
         {
             _anim.SetBool("isDead", true);
             this.enabled = false;

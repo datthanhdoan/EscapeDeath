@@ -41,6 +41,13 @@ public class PlayerMoverment : MonoBehaviour, IDieable
     [Range(0, 5)] public float _attackRange;
     [SerializeField] private LayerMask _enemyLayers;
 
+
+    //
+    [Header("Health")]
+    public PlayerHealthBar _playerHealthBar;
+    public int _maxHealth = 150;
+    public int _currentHealth;
+
     // animation
     [SerializeField] private Animator anim;
     private int currentState;
@@ -68,17 +75,19 @@ public class PlayerMoverment : MonoBehaviour, IDieable
         if (!isGrounded) return Jump;
         if (isGrounded) return Mathf.Abs(moveHorizontal) > 0.1f ? Run : Idle;
         return Idle;
-
     }
 
 
     void Start()
     {
+        _currentHealth = _maxHealth;
+        _playerHealthBar.SetHealth(_currentHealth, _maxHealth);
         rb = GetComponent<Rigidbody2D>();
         moveSpeed = 10f;
         slowMove = moveSpeed / 3;
         jumpForce = 30f;
         originalGravity = rb.gravityScale;
+
     }
 
     void Update()
@@ -174,7 +183,16 @@ public class PlayerMoverment : MonoBehaviour, IDieable
         }
         if (_isCombatComplete) _isCombat = false;
     }
-
+    public void TakeDamage(int damage)
+    {
+        _currentHealth -= damage;
+        _playerHealthBar.SetHealth(_currentHealth, _maxHealth);
+        _isCombat = true;
+        if (_currentHealth <= 0)
+        {
+            isDead = true;
+        }
+    }
     private void BasicAttack()
     {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _enemyLayers);

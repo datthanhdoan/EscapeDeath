@@ -19,7 +19,7 @@ public class EnemyMoverment : MonoBehaviour
     private float speed;
     private float distance, direction;
     private bool isFacingRight = true;
-    private bool isRunning = false;
+    public bool isRunning = false;
     private float length;
 
     public float getDistance()
@@ -48,11 +48,15 @@ public class EnemyMoverment : MonoBehaviour
     {
         return isRunning;
     }
+    public void setIsRunning(bool run)
+    {
+        isRunning = run;
+    }
 
     private void FixedUpdate()
     {
 
-        if (enemyScript.getCurrentHealth() == 0)
+        if (enemyScript.getCurrentHealth() <= 0)
         {
             collider.enabled = false;
             Destroy(rb);
@@ -65,7 +69,7 @@ public class EnemyMoverment : MonoBehaviour
 
         deltaY = Mathf.Abs(objectPosition.y - playerPosition.y);
 
-        if ((deltaX * deltaX) / (distanceX * distanceX) + (deltaY * deltaY) / (distanceY * distanceY) <= 1)
+        if ((deltaX * deltaX) / (distanceX * distanceX) + (deltaY * deltaY) / (distanceY * distanceY) <= 1 && !enemyScript.isCombat)
         {
             //if (playerMoverment.getDead()) return;
             isRunning = true;
@@ -87,7 +91,7 @@ public class EnemyMoverment : MonoBehaviour
         else
         {
             isRunning = false;
-            float deceleration = 1.5f;
+            float deceleration = 20.5f;
             rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, 0, deceleration * Time.deltaTime), rb.velocity.y);
         }
 
