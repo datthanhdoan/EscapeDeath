@@ -5,7 +5,7 @@ using UnityEngine;
 public class ArrowScript : MonoBehaviour
 {
     private GameObject player;
-    private Mob mob;
+    private EnemyMoverment EnemyMoverment;
     private Rigidbody2D rb;
     [SerializeField] private float force = 25;
     private float timer;
@@ -17,7 +17,7 @@ public class ArrowScript : MonoBehaviour
     {
         playerMoverment = FindObjectOfType<PlayerMoverment>();
         timer = 0;
-        mob = FindObjectOfType<Mob>();
+        EnemyMoverment = FindObjectOfType<EnemyMoverment>();
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         Vector3 direction = player.transform.position - transform.position;
@@ -41,10 +41,6 @@ public class ArrowScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             playerMoverment.setDead(true);
-        }
-        if (collision.gameObject.CompareTag("Mob"))
-        {
-            mob.setDead(true);
         }
     }
 }
