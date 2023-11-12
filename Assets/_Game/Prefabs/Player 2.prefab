@@ -5142,7 +5142,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8875682831759434495}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Colider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5176,7 +5176,7 @@ GameObject:
   - component: {fileID: 8153990113114732431}
   - component: {fileID: 8153990113114732430}
   - component: {fileID: 8153990113114732433}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5234,7 +5234,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.018048286}
+  m_Offset: {x: 0, y: -0.06643438}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -5245,7 +5245,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 8.255236}
+  m_Size: {x: 1, y: 6.9759207}
   m_EdgeRadius: 0
 --- !u!114 &8153990113114732433
 MonoBehaviour:
@@ -5271,7 +5271,7 @@ GameObject:
   - component: {fileID: 5530550158481559835}
   - component: {fileID: 4290365572159672256}
   - component: {fileID: 8723550382410797588}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sword2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5473,7 +5473,7 @@ GameObject:
   - component: {fileID: 3887978721763395916}
   - component: {fileID: 5982808658812400026}
   - component: {fileID: 7694904859790955889}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sword1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5762,12 +5762,14 @@ MonoBehaviour:
   dashDelay: 5
   _dash: {fileID: 4832858397769519643}
   _dust: {fileID: 605221793951317065}
+  _floatingPoint: {fileID: 0}
   _attackPoint: {fileID: 605221793392979625}
-  _attackDamage: 10
+  _attackDamage: 15
   _attackRange: 2.79
   _enemyLayers:
     serializedVersion: 2
     m_Bits: 256
+  DartObject: {fileID: 0}
   _playerHealthBar: {fileID: 0}
   _maxHealth: 150
   _currentHealth: 150
@@ -5915,7 +5917,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2676105046802509164}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: EGaren
   m_TagString: Untagged
   m_Icon: {fileID: 0}

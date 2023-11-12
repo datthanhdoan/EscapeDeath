@@ -14,8 +14,12 @@ public class EnemyScript : MonoBehaviour
     public Transform _attackPoint;
     public int _attackDamage = 10;
     public bool isCombat = false;
+    public bool isHurt = false;
     [Range(0, 5)] public float _attackRange;
     [SerializeField] private LayerMask _playerLayers;
+
+    public GameObject FloatingPoint;
+    public GameObject heartDrop;
     public int getCurrentHealth()
     {
         return currentHealth;
@@ -56,6 +60,7 @@ public class EnemyScript : MonoBehaviour
     {
         _anim.SetBool("Hurt", false);
         isCombat = false;
+        isHurt = false;
     }
     private void OnDrawGizmosSelected()
     {
@@ -68,8 +73,16 @@ public class EnemyScript : MonoBehaviour
         healthBar.SetHealth(currentHealth, maxHealth);
         _anim.SetBool("Hurt", true);
         isCombat = true;
+        isHurt = true;
+        GameObject points = Instantiate(FloatingPoint, transform.position, Quaternion.identity) as GameObject;
+        points.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
         if (currentHealth <= 0)
         {
+            if (heartDrop != null)
+            {
+                Instantiate(heartDrop, transform.position, Quaternion.identity);
+
+            }
             _anim.SetBool("isDead", true);
             this.enabled = false;
         }

@@ -1,7 +1,7 @@
 ﻿using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerMoverment : MonoBehaviour, IDieable
+public class PlayerMoverment : MonoBehaviour
 {
 
     public Rigidbody2D rb;
@@ -28,8 +28,10 @@ public class PlayerMoverment : MonoBehaviour, IDieable
     //Effect
     [Header("Effect")]
     [SerializeField] private TrailRenderer _dash;
+    private float _timeCoolDownDash = 1f;
+    private float _TimerCoolDownDash = 0f;
     [SerializeField] private ParticleSystem _dust;
-
+    [SerializeField] private GameObject _floatingPoint;
     // Combat
     [Header("Combat")]
     private bool _isTakeHit = false;
@@ -37,9 +39,14 @@ public class PlayerMoverment : MonoBehaviour, IDieable
     private int _CombatState;
     private bool _isCombatComplete = true;
     public Transform _attackPoint;
-    public int _attackDamage = 10;
+    public int _attackDamage = 20;
     [Range(0, 5)] public float _attackRange;
     [SerializeField] private LayerMask _enemyLayers;
+    private float _timeCoolDownAttack = 0.28f;
+    private float _TimerCoolDownAttack = 0f;
+    private float _timeCoolDownDartAttack = 1f;
+    private float _TimerCoolDownDartAttack = 0f;
+    public GameObject DartObject;
 
 
     //
@@ -111,18 +118,31 @@ public class PlayerMoverment : MonoBehaviour, IDieable
     }
 
     #region Effect
+    private void FloatingPoints(int damage)
+    {
+        GameObject points = Instantiate(_floatingPoint, transform.position, Quaternion.identity) as GameObject;
+        points.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
+    }
     private void DashEffect()
     {
-        if (Input.GetKeyDown(KeyCode.W) && dashTime <= 0 && !isDashing)
+        if (_TimerCoolDownDash <= 0)
         {
-            moveSpeed += dashBoost;
-            dashTime = DashTime;
-            isDashing = true;
-            dashTimer = dashDelay;
-            rb.gravityScale = 0f;
-            rb.velocity = new Vector2(rb.velocity.x, 0f);
-            _dash.emitting = true;
-            if (isGrounded) DustEffect();
+            if (Input.GetKeyDown(KeyCode.W) && dashTime <= 0 && !isDashing)
+            {
+                _TimerCoolDownDash = _timeCoolDownDash;
+                moveSpeed += dashBoost;
+                dashTime = DashTime;
+                isDashing = true;
+                dashTimer = dashDelay;
+                rb.gravityScale = 0f;
+                rb.velocity = new Vector2(rb.velocity.x, 0f);
+                _dash.emitting = true;
+                if (isGrounded) DustEffect();
+            }
+        }
+        else
+        {
+            _TimerCoolDownDash -= Time.deltaTime;
         }
         if (dashTime <= 0 && isDashing)
         {
@@ -155,6 +175,7 @@ public class PlayerMoverment : MonoBehaviour, IDieable
     }
     private void Combat()
     {
+        // Can toi uu lai
         if (_isTakeHit)
         {
             _isCombatComplete = false;
@@ -162,14 +183,42 @@ public class PlayerMoverment : MonoBehaviour, IDieable
             _CombatState = TakeHit;
             return;
         }
-        if (Input.GetKeyDown(KeyCode.Q))
+
+
+        if (_TimerCoolDownAttack <= 0)
         {
-            _isCombatComplete = false;
-            _isCombat = true;
-            _CombatState = Random.Range(0, 2) == 0 ? AT1 : AT2;
-            BasicAttack();
-            return;
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                _isCombatComplete = false;
+                _isCombat = true;
+                _CombatState = Random.Range(0, 2) == 0 ? AT1 : AT2;
+                BasicAttack();
+                _TimerCoolDownAttack = _timeCoolDownAttack;
+                return;
+            }
+
         }
+        else
+        {
+            _TimerCoolDownAttack -= Time.deltaTime;
+        }
+        if (_TimerCoolDownDartAttack <= 0)
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                _isCombatComplete = false;
+                _isCombat = true;
+                _CombatState = Dart;
+                DartAttack();
+                _TimerCoolDownDartAttack = _timeCoolDownDartAttack;
+                return;
+            }
+        }
+        else
+        {
+            _TimerCoolDownDartAttack -= Time.deltaTime;
+        }
+
         if (_isCombat)
         {
             foreach (string animationName in combatAnimations)
@@ -183,15 +232,27 @@ public class PlayerMoverment : MonoBehaviour, IDieable
         }
         if (_isCombatComplete) _isCombat = false;
     }
+    private void SkillCoolDown()
+    {
+
+    }
     public void TakeDamage(int damage)
     {
         _currentHealth -= damage;
         _playerHealthBar.SetHealth(_currentHealth, _maxHealth);
         _isCombat = true;
+        FloatingPoints(damage);
         if (_currentHealth <= 0)
         {
             isDead = true;
         }
+    }
+    public void TakeHealth(int health)
+    {
+
+        _currentHealth = (_currentHealth + health) > _maxHealth ? _maxHealth : (_currentHealth + health);
+        _playerHealthBar.SetHealth(_currentHealth, _maxHealth);
+        Debug.Log("Add health = " + health + " , current health = " + _currentHealth);
     }
     private void BasicAttack()
     {
@@ -202,7 +263,10 @@ public class PlayerMoverment : MonoBehaviour, IDieable
             enemy.GetComponentInChildren<EnemyScript>().TakeDamage(_attackDamage);
         }
     }
-
+    private void DartAttack()
+    {
+        Instantiate(DartObject, transform.position, Quaternion.identity);
+    }
     private void OnDrawGizmosSelected()
     {
         if (_attackPoint == null) return;
@@ -254,7 +318,8 @@ public class PlayerMoverment : MonoBehaviour, IDieable
     private static readonly int AT1 = Animator.StringToHash("Player_AT1");
     private static readonly int AT2 = Animator.StringToHash("Player_AT2");
     private static readonly int TakeHit = Animator.StringToHash("Player_TakeHit");
-    private string[] combatAnimations = { "Player_TakeHit", "Player_AT1", "Player_AT2" };
+    private static readonly int Dart = Animator.StringToHash("phi_tieu");
+    private string[] combatAnimations = { "Player_TakeHit", "Player_AT1", "Player_AT2", "phi_tieu" };
     #endregion
 
 

@@ -16,7 +16,7 @@ public class EnemyMoverment : MonoBehaviour
     public Rigidbody2D rb;
     [SerializeField] private float distanceX;
     private float distanceY, deltaX, deltaY;
-    private float speed;
+    [SerializeField] private float speed = 2.5f;
     private float distance, direction;
     private bool isFacingRight = true;
     public bool isRunning = false;
@@ -42,7 +42,7 @@ public class EnemyMoverment : MonoBehaviour
         length = GetComponent<Collider2D>().bounds.size.x;
         playerMoverment = FindObjectOfType<PlayerMoverment>();
         collider = GetComponent<Collider2D>();
-        speed = 2.5f;
+
     }
     public bool getIsRunning()
     {
@@ -60,6 +60,7 @@ public class EnemyMoverment : MonoBehaviour
         {
             collider.enabled = false;
             Destroy(rb);
+            //Destroy(gameObject, 2f);
             return;
         }
         distanceY = distanceX / 2;
@@ -68,7 +69,11 @@ public class EnemyMoverment : MonoBehaviour
         deltaX = Mathf.Abs(objectPosition.x - playerPosition.x);
 
         deltaY = Mathf.Abs(objectPosition.y - playerPosition.y);
-
+        if (enemyScript.isHurt)
+        {
+            int dir = objectPosition.x < playerPosition.x ? -1 : 1;
+            rb.velocity = new Vector2(dir * 10f, rb.velocity.y);
+        }
         if ((deltaX * deltaX) / (distanceX * distanceX) + (deltaY * deltaY) / (distanceY * distanceY) <= 1 && !enemyScript.isCombat)
         {
             //if (playerMoverment.getDead()) return;

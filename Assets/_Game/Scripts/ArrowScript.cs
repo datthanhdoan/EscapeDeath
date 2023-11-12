@@ -1,46 +1,44 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ArrowScript : MonoBehaviour
 {
-    private GameObject player;
-    private EnemyMoverment EnemyMoverment;
     private Rigidbody2D rb;
-    [SerializeField] private float force = 25;
-    private float timer;
-    [SerializeField] private float _lifetime = 1.2f;
-    private PlayerMoverment playerMoverment;
-
-    // Start is called before the first frame update
-    void Start()
+    private float speed = 40f;
+    public GameObject takeArrowEffect;
+    private GameObject player;
+    private void Awake()
     {
-        playerMoverment = FindObjectOfType<PlayerMoverment>();
-        timer = 0;
-        EnemyMoverment = FindObjectOfType<EnemyMoverment>();
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
-        Vector3 direction = player.transform.position - transform.position;
-        rb.velocity = new Vector2(direction.x, direction.y).normalized * force;
-        float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, rot + 90);
     }
 
-
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        timer += Time.deltaTime;
-        if (timer > _lifetime)
-        {
-            Destroy(gameObject);
-        }
+
+
+        // Đặt tốc độ của đối tượng
+        rb.velocity = Vector2.left * speed;
+
+        // Di chuyển đối tượng ra khỏi đối tượng cha một khoảng cố định
+        //float playerRotationY = player.transform.eulerAngles.y;
+        //float dartPosWithPlayer = playerRotationY == 0 ? 2f : -2f;
+        //transform.localPosition += new Vector3(dartPosWithPlayer, 0, 0);
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            playerMoverment.setDead(true);
+            collision.GetComponentInChildren<PlayerMoverment>().TakeDamage(10);
+            Instantiate(takeArrowEffect, transform.position, Quaternion.identity);
+        }
+        if (!collision.gameObject.CompareTag("Health"))
+        {
+            Destroy(gameObject);
         }
     }
+
 }
+
