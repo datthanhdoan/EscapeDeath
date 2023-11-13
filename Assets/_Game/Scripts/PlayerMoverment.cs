@@ -261,7 +261,15 @@ public class PlayerMoverment : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             Debug.Log("Hit " + enemy.name);
-            enemy.GetComponentInChildren<EnemyScript>().TakeDamage(_attackDamage);
+            if (enemy.GetComponentInChildren<EnemyScript>() != null)
+            {
+                enemy.GetComponentInChildren<EnemyScript>().TakeDamage(_attackDamage);
+            }
+            if (enemy.GetComponentInChildren<Boss_1>() != null)
+            {
+                enemy.GetComponentInChildren<Boss_1>().TakeDamage(_attackDamage);
+            }
+
         }
     }
     private void DartAttack()
@@ -293,7 +301,7 @@ public class PlayerMoverment : MonoBehaviour
     {
         if (isGrounded && moveVertical > 0.1f)
         {
-            audioManagerScript.SoundEffect(audioManagerScript.Jump);
+            //audioManagerScript.SoundEffect(audioManagerScript.Jump);
             DustEffect();
             rb.velocity = (new Vector2(rb.velocity.x, 1 * jumpForce));
         }

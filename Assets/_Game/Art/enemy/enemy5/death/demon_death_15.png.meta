@@ -103,7 +103,28 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: demon_death_15_13
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 1
+        width: 141
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a32bde81cdd5bc488ac5472cb638103
+      internalID: 1870368933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -114,7 +135,24 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      demon_death_15_0: -667620078
+      demon_death_15_1: -433308314
+      demon_death_15_10: 540810856
+      demon_death_15_11: 948836060
+      demon_death_15_12: -1304947331
+      demon_death_15_13: 1870368933
+      demon_death_15_14: -545213006
+      demon_death_15_15: -1410726636
+      demon_death_15_16: 474555921
+      demon_death_15_2: 415390656
+      demon_death_15_3: 1687822150
+      demon_death_15_4: 946197884
+      demon_death_15_5: -1370333307
+      demon_death_15_6: 1110951898
+      demon_death_15_7: 2004228833
+      demon_death_15_8: -2086189307
+      demon_death_15_9: -1577687983
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

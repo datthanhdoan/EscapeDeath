@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManagerScript : MonoBehaviour
 {
     public GameObject gameOverUi;
+    public GameObject VictoryScene;
     private PlayerMoverment playerMoverment;
-    [SerializeField] private Animator anim;
-    [SerializeField] private Animator[] animRev;
+    public Boss_1 boss1;
+
     //[SerializeField] private AudioManagerScript audioManagerScript;
     void Start()
     {
@@ -18,11 +20,19 @@ public class GameManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerMoverment.getDead() && !gameOverUi.activeSelf)
+        if (playerMoverment._currentHealth <= 0 && !gameOverUi.activeSelf)
         {
             gameOverUI();
         }
-        if (playerMoverment.getDead() && gameOverUi.activeSelf && Input.GetKeyDown("space"))
+        if (boss1.getCurrentHealth() <= 0 && !VictoryScene.activeSelf)
+        {
+            VictoryScene.SetActive(true);
+        }
+        if (playerMoverment._currentHealth <= 0 && gameOverUi.activeSelf && Input.GetKeyDown("space"))
+        {
+            StartCoroutine(Load(SceneManager.GetActiveScene().buildIndex));
+        }
+        if (boss1.getCurrentHealth() <= 0 && VictoryScene.activeSelf && Input.GetKeyDown("space"))
         {
             StartCoroutine(Load(SceneManager.GetActiveScene().buildIndex));
         }
@@ -44,7 +54,7 @@ public class GameManagerScript : MonoBehaviour
     }
     public void nextScreen()
     {
-        StartCoroutine(Load((int)SceneManager.GetActiveScene().buildIndex + 1));
+        SceneManager.LoadScene("FirstScreen");
 
     }
     public void previousScreen()
@@ -58,15 +68,8 @@ public class GameManagerScript : MonoBehaviour
     }
     IEnumerator Load(int screenname)
     {
-        anim.CrossFade(TransEnd, 0, 0, 0);
-        if (animRev != null)
-        {
-            foreach (Animator animR in animRev)
-            {
-                animR.CrossFade(TransStart, 0, 0, 0);
-            }
-        }
-        yield return new WaitForSeconds(1);
+
+        yield return new WaitForSeconds(0);
 
         if (screenname != (int)SceneManager.GetActiveScene().buildIndex)
         {
@@ -79,19 +82,8 @@ public class GameManagerScript : MonoBehaviour
             //    AudioManagerScript.instance = null;
         }
         SceneManager.LoadScene(screenname);
-        anim.CrossFade(TransStart, 0, 0, 0);
-        if (animRev != null)
-        {
-            foreach (Animator animR in animRev)
-            {
-                animR.CrossFade(TransEnd, 0, 0, 0);
-            }
-        }
+
 
     }
-    #region Animation
-    private static readonly int TransStart = Animator.StringToHash("Trans_Start");
-    private static readonly int TransEnd = Animator.StringToHash("Trans_End");
 
-    #endregion
 }

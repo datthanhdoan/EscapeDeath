@@ -103,7 +103,28 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: demon_death_17_8
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 1
+        width: 129
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c65e5c480f4febd40a5153b7dca1cef4
+      internalID: -278181567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -114,7 +135,16 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      demon_death_17_0: -1112304297
+      demon_death_17_1: 1186574678
+      demon_death_17_2: 152007678
+      demon_death_17_3: -1883969279
+      demon_death_17_4: 2066286918
+      demon_death_17_5: -902242421
+      demon_death_17_6: -1859816871
+      demon_death_17_7: 686023916
+      demon_death_17_8: -278181567
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
