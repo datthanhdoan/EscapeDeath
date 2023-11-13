@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerMoverment : MonoBehaviour
 {
-
+    private AudioManagerScript audioManagerScript;
     public Rigidbody2D rb;
     // Moverment
     public LayerMask groundLayer;
@@ -14,7 +14,7 @@ public class PlayerMoverment : MonoBehaviour
     private bool isDead = false;
     //private Vector3 m_Velocity = Vector3.zero;
     //[Range(0, .3f)][SerializeField] private float m_MovementSmoothing = .05f;
-
+    public int points = 0;
     private bool isGrounded;
     float slowMove;
     // Luot
@@ -71,10 +71,10 @@ public class PlayerMoverment : MonoBehaviour
     {
         this.isDead = isDead;
     }
-    //private void Awake()
-    //{
-    //    audioManagerScript = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManagerScript>();
-    //}
+    private void Awake()
+    {
+        audioManagerScript = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManagerScript>();
+    }
     private int GetState()
     {
         if (isDead) return Dead;
@@ -256,6 +256,7 @@ public class PlayerMoverment : MonoBehaviour
     }
     private void BasicAttack()
     {
+        audioManagerScript.SoundEffect(audioManagerScript.Attack);
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _enemyLayers);
         foreach (Collider2D enemy in hitEnemies)
         {
@@ -292,6 +293,7 @@ public class PlayerMoverment : MonoBehaviour
     {
         if (isGrounded && moveVertical > 0.1f)
         {
+            audioManagerScript.SoundEffect(audioManagerScript.Jump);
             DustEffect();
             rb.velocity = (new Vector2(rb.velocity.x, 1 * jumpForce));
         }

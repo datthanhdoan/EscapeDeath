@@ -12,11 +12,11 @@ public class AudioManagerScript : MonoBehaviour
     [SerializeField] private AudioSource MusicSource;
     [Header("Audio Clip")]
     [SerializeField] private AudioClip backgroundMusic;
-    public AudioClip deadth;
-    public AudioClip jump;
-    public AudioClip climb;
-    public AudioClip run;
-    public AudioClip rock;
+    public AudioClip Attack;
+    public AudioClip Takehit;
+    public AudioClip Jump;
+    public AudioClip Fire;
+    public AudioClip Heal;
     public AudioClip DoorOpen;
     [Header("Dog Clip")]
     public AudioClip dogWol;

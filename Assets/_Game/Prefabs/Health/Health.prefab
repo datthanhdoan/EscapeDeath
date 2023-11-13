@@ -219,3 +219,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   addHealth: 5
   healthEffect: {fileID: 6403611257017933071, guid: 54e90133cf7c60746ba4d967659d62d6, type: 3}
+  _gravity: 1

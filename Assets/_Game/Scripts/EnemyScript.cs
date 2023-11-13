@@ -17,7 +17,7 @@ public class EnemyScript : MonoBehaviour
     public bool isHurt = false;
     [Range(0, 5)] public float _attackRange;
     [SerializeField] private LayerMask _playerLayers;
-
+    private PlayerMoverment _playerMoverment;
     public GameObject FloatingPoint;
     public GameObject heartDrop;
     public int getCurrentHealth()
@@ -28,6 +28,7 @@ public class EnemyScript : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar.SetHealth(maxHealth, maxHealth);
+        _playerMoverment = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMoverment>();
     }
 
     // Update is called once per frame
@@ -85,6 +86,7 @@ public class EnemyScript : MonoBehaviour
             }
             _anim.SetBool("isDead", true);
             this.enabled = false;
+            _playerMoverment.points += 1;
         }
     }
 }
