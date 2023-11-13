@@ -44,7 +44,7 @@ public class GameManagerScript : MonoBehaviour
     }
     public void nextScreen()
     {
-        StartCoroutine(Load((int)SceneManager.GetActiveScene().buildIndex + 1));
+        SceneManager.LoadScene("FirstScreen");
 
     }
     public void previousScreen()

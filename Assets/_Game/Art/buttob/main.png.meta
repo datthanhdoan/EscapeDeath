@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5ea421e6f90a4204a887124ffc91479e
+guid: ad295ce5a3ffcce43ab60b02ef3efbbb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 8
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -103,28 +103,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: demon_death_8_4
-      rect:
-        serializedVersion: 2
-        x: 76
-        y: 1
-        width: 154
-        height: 122
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 87f6bf9a84a37ce44b63e69822a7076e
-      internalID: 1532326262
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -135,13 +114,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      demon_death_8_0: 1266476924
-      demon_death_8_1: 854784081
-      demon_death_8_2: 1406455721
-      demon_death_8_3: 80651720
-      demon_death_8_4: 1532326262
-      demon_death_8_5: 252765674
+    nameFileIdTable: {}
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

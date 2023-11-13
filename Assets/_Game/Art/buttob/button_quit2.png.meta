@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1b1fe6dd635e6564b865f7c2231f9758
+guid: a3887d181ed5b8d49a389db56376c204
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,306 +105,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: death_0
+      name: button_quit2_0
       rect:
         serializedVersion: 2
-        x: 34
-        y: 117
-        width: 53
-        height: 63
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 115812eb4b8784b4c801e76e5139c07d
-      internalID: -2115640432
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: death_1
-      rect:
-        serializedVersion: 2
-        x: 134
-        y: 117
-        width: 38
-        height: 54
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 86e51cd709466994ea0189a84fa8df99
-      internalID: -1788859222
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: death_2
-      rect:
-        serializedVersion: 2
-        x: 161
-        y: 162
-        width: 26
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0a25ea4e974e38041ae68ad8743015e3
-      internalID: -739541229
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: death_3
-      rect:
-        serializedVersion: 2
-        x: 172
-        y: 159
-        width: 8
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 869544579ae0c5b49ad802cf7e36cdda
-      internalID: 1013603731
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: death_4
-      rect:
-        serializedVersion: 2
-        x: 234
-        y: 117
-        width: 53
-        height: 60
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d057909ec9455a44aa8d8206b7d677da
-      internalID: 2113462180
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: death_5
-      rect:
-        serializedVersion: 2
-        x: 334
-        y: 117
-        width: 32
-        height: 54
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1329ecb2f5e7d8e4cad87c17273785b4
-      internalID: -1561956116
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: death_6
-      rect:
-        serializedVersion: 2
-        x: 434
-        y: 117
-        width: 31
-        height: 54
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b74571ea8f5f65a48876cb7e29b93034
-      internalID: 1574826597
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: death_7
-      rect:
-        serializedVersion: 2
-        x: 534
-        y: 117
-        width: 21
-        height: 54
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2b7995a49173b1b47b94125ebcded63b
-      internalID: 1973577739
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: death_8
-      rect:
-        serializedVersion: 2
-        x: 635
-        y: 125
-        width: 20
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b9f0f9b1c0d6e9442b2ef4b8a227f7f9
-      internalID: -1318770197
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: death_9
-      rect:
-        serializedVersion: 2
-        x: 736
-        y: 125
-        width: 23
-        height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1742bcb560e3290419fd708da1be0a94
-      internalID: -1901638900
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: death_10
-      rect:
-        serializedVersion: 2
-        x: 936
-        y: 144
-        width: 26
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1503278a1d8216a48ad84da194735463
-      internalID: 1425556909
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: death_11
-      rect:
-        serializedVersion: 2
-        x: 836
-        y: 132
-        width: 26
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5ff04ad5459fadb4998a52b027b0486f
-      internalID: 712560490
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: death_12
-      rect:
-        serializedVersion: 2
-        x: 42
-        y: 44
-        width: 20
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cc4d7af42dc697d4b94100704fab494c
-      internalID: 185488061
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: death_13
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 44
-        width: 17
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f8a6d37cd789afc4cac3a9a4ac838aa4
-      internalID: 646918216
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: death_14
-      rect:
-        serializedVersion: 2
-        x: 245
-        y: 46
-        width: 15
+        x: 35
+        y: 253
+        width: 22
         height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -413,20 +119,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2470764f397ab3b4c8c83f9144446f37
-      internalID: -201692895
+      spriteID: 81bf183d92b314242b0286cfe073835e
+      internalID: -779424595
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death_15
+      name: button_quit2_1
       rect:
         serializedVersion: 2
-        x: 345
-        y: 47
-        width: 14
-        height: 13
+        x: 67
+        y: 253
+        width: 22
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -434,20 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2312006061b258d4fb8ab0940816d536
-      internalID: 1734020919
+      spriteID: e5a97d778d0846e48b967aec0608fb8c
+      internalID: 1157860422
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death_16
+      name: button_quit2_2
       rect:
         serializedVersion: 2
-        x: 445
-        y: 47
-        width: 14
-        height: 13
+        x: 97
+        y: 253
+        width: 22
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -455,20 +161,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6683a9d9e8c11140a8025f81ca21393
-      internalID: 1779063767
+      spriteID: 4ab1509afa0d9994ea330c1198374d3c
+      internalID: 1121135188
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death_17
+      name: button_quit2_3
       rect:
         serializedVersion: 2
-        x: 542
-        y: 45
-        width: 19
-        height: 17
+        x: 128
+        y: 253
+        width: 22
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -476,20 +182,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 746c9411900556744a870644217b8b7b
-      internalID: -607458076
+      spriteID: 5e092a29106396043b4871dc361cc9b1
+      internalID: -795125228
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death_18
+      name: button_quit2_4
       rect:
         serializedVersion: 2
-        x: 643
-        y: 46
-        width: 18
-        height: 16
+        x: 35
+        y: 227
+        width: 22
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -497,20 +203,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5afdcf7071ef7094eb690c463c97442a
-      internalID: -1290767101
+      spriteID: 1a74732f1a76b884aa84ea77bd0bc3e0
+      internalID: -805556123
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: death_19
+      name: button_quit2_5
       rect:
         serializedVersion: 2
-        x: 743
-        y: 43
-        width: 20
-        height: 22
+        x: 59
+        y: 231
+        width: 7
+        height: 7
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -518,8 +224,365 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81fa4fcfba6487c45adf94977e73ff91
-      internalID: -1682709299
+      spriteID: 06cb203fbd0bfd642adefb2fbbdb3109
+      internalID: 383211778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_quit2_6
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 227
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed0073f7902d31d46bfd76ba6b051a63
+      internalID: 1767000455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_quit2_7
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 219
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7d8a8e53fb8de346bd1dd795dca4d1c
+      internalID: 359937770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_quit2_8
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 219
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34597199d12da3641829ab042ddb8df6
+      internalID: -1542215739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_quit2_9
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 219
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4eca23142079a014d952b11a6b998b43
+      internalID: -2038522351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_quit2_10
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 223
+        width: 48
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19a051d6bd33b0642a911f80d4c77aa0
+      internalID: -1281827663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_quit2_11
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 211
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d55fd18c618f9241a4d66038653c4b3
+      internalID: -701446310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_quit2_12
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 215
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e9f141c0981bfc47a4d416ca576c55c
+      internalID: -910826127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_quit2_13
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 211
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22c0c7fecb1780a43b4de94318ec7d2a
+      internalID: -1181135656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_quit2_14
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 161
+        width: 36
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a30a32317308c84da7da53e1a214571
+      internalID: 747699965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_quit2_15
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 112
+        width: 161
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cbf11a4ac6fc10409e79e2bcf170ae7
+      internalID: -1374575147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_quit2_16
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 145
+        width: 48
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 138308b40a434184d82b99d073bfd702
+      internalID: 1589802771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_quit2_17
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 129
+        width: 42
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6501d2f7689d87f42af05875a7f1a7d0
+      internalID: 71840744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_quit2_18
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 66
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be4cc8897bfa3454b82d5e248916a9a4
+      internalID: -564217649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_quit2_19
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 66
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05c0066851269424ea0e3ede4dff4359
+      internalID: -325464329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_quit2_20
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 66
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e4cd7748da4ba846be216c5d420f314
+      internalID: -1263510548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_quit2_21
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 28
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84deac8488fc8244b93b5d58e813d41c
+      internalID: 9007089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_quit2_22
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 27
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f787b86f08e2884ea944bf1e98d13c2
+      internalID: -1953182723
       vertices: []
       indices: 
       edges: []
@@ -535,30 +598,29 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      death_0: -2115640432
-      death_1: -1788859222
-      death_10: 1425556909
-      death_11: 712560490
-      death_12: 185488061
-      death_13: 646918216
-      death_14: -201692895
-      death_15: 1734020919
-      death_16: 1779063767
-      death_17: -607458076
-      death_18: -1290767101
-      death_19: -1682709299
-      death_2: -739541229
-      death_20: -484481268
-      death_21: -1962634445
-      death_22: 2131021834
-      death_23: -1419874126
-      death_3: 1013603731
-      death_4: 2113462180
-      death_5: -1561956116
-      death_6: 1574826597
-      death_7: 1973577739
-      death_8: -1318770197
-      death_9: -1901638900
+      button_quit2_0: -779424595
+      button_quit2_1: 1157860422
+      button_quit2_10: -1281827663
+      button_quit2_11: -701446310
+      button_quit2_12: -910826127
+      button_quit2_13: -1181135656
+      button_quit2_14: 747699965
+      button_quit2_15: -1374575147
+      button_quit2_16: 1589802771
+      button_quit2_17: 71840744
+      button_quit2_18: -564217649
+      button_quit2_19: -325464329
+      button_quit2_2: 1121135188
+      button_quit2_20: -1263510548
+      button_quit2_21: 9007089
+      button_quit2_22: -1953182723
+      button_quit2_3: -795125228
+      button_quit2_4: -805556123
+      button_quit2_5: 383211778
+      button_quit2_6: 1767000455
+      button_quit2_7: 359937770
+      button_quit2_8: -1542215739
+      button_quit2_9: -2038522351
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -261,7 +261,13 @@ public class PlayerMoverment : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             Debug.Log("Hit " + enemy.name);
-            enemy.GetComponentInChildren<EnemyScript>().TakeDamage(_attackDamage);
+            if(enemy.GetComponentInChildren<EnemyScript>()!=null){
+                enemy.GetComponentInChildren<EnemyScript>().TakeDamage(_attackDamage);
+            }
+            if(enemy.GetComponentInChildren<Boss_1>()!=null){
+                enemy.GetComponentInChildren<Boss_1>().TakeDamage(_attackDamage);
+            }
+
         }
     }
     private void DartAttack()

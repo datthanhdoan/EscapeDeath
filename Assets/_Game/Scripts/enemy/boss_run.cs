@@ -9,6 +9,9 @@ public class boss_run : StateMachineBehaviour
     public int attackRange;
     Rigidbody2D rb;
     Boss boss;
+    float attackDelay = 4f; // Thời gian delay giữa các lần tấn công
+    float attackTimer = 0f; // Biến đếm thời gian
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -29,8 +32,15 @@ public class boss_run : StateMachineBehaviour
         //Debug.Log(Vector2.Distance(player.position, rb.position));
         if (Vector2.Distance(player.position, rb.position) <= 16)
         {
-            Debug.Log("attack"); ;
-            animator.SetTrigger("Attack");
+            attackTimer += Time.deltaTime; // Tăng biến đếm thời gian
+
+            if (attackTimer >= attackDelay)
+            {
+                Debug.Log("attack");
+                animator.SetTrigger("Attack");
+
+                attackTimer = 0f; // Đặt lại biến đếm thời gian về 0
+            }
         }
     }
 
